@@ -1,0 +1,31 @@
+name: Self Hosted Runner Test
+
+on:
+    push:
+        branches:
+        - main
+
+jobs:
+    test-runner:
+        runs-on: self-hosted
+
+
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Show System Information
+          run: |
+            echo "Runner is working!"
+            whoami
+            pwd
+            uname -a
+
+        - name: Show Node Version
+          run: |
+            node -v || echo "Node.js not installed"
+
+        - name: List Files
+          run: |
+            ls -la
+
